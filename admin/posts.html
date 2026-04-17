@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Posts — Emmanuel Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">Emmanuel</div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link">
+          <span class="sidebar-link-icon">⊞</span> Dashboard
+        </a>
+        <a href="posts.html" class="sidebar-link active">
+          <span class="sidebar-link-icon">✎</span> All Posts
+        </a>
+        <a href="editor.html" class="sidebar-link">
+          <span class="sidebar-link-icon">＋</span> New Post
+        </a>
+        <a href="messages.html" class="sidebar-link">
+          <span class="sidebar-link-icon">✉</span> Messages
+        </a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="../index.html" class="sidebar-link">
+          <span class="sidebar-link-icon">↗</span> View Site
+        </a>
+        <a href="#" class="sidebar-link" id="logoutBtn">
+          <span class="sidebar-link-icon">⏻</span> Logout
+        </a>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h1>All Posts</h1>
+        <a href="editor.html" class="btn-primary" style="opacity:1;animation:none;">+ New Post</a>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <input type="text" id="postsSearch" placeholder="Search posts..."
+          style="padding:12px 16px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-family:var(--font-body);font-size:0.9rem;outline:none;width:300px;" />
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Featured</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="postsTableBody">
+            <tr><td colspan="6" style="color:var(--text-secondary);text-align:center;padding:40px;">Loading posts...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="../js/firebase-config.js"></script>
+  <script type="module" src="../js/admin-posts.js"></script>
+</body>
+</html>
