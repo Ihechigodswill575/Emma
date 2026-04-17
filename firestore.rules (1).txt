@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Posts: anyone can read published posts, only auth users can write
+    match /posts/{postId} {
+      allow read: if resource.data.status == 'published' || request.auth != null;
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // Messages: anyone can create (contact form), only auth users can read/delete
+    match /messages/{msgId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+  }
+}
