@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post Editor — Emmanuel Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">Emmanuel</div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link">
+          <span class="sidebar-link-icon">⊞</span> Dashboard
+        </a>
+        <a href="posts.html" class="sidebar-link">
+          <span class="sidebar-link-icon">✎</span> All Posts
+        </a>
+        <a href="editor.html" class="sidebar-link active">
+          <span class="sidebar-link-icon">＋</span> New Post
+        </a>
+        <a href="messages.html" class="sidebar-link">
+          <span class="sidebar-link-icon">✉</span> Messages
+        </a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="../index.html" class="sidebar-link">
+          <span class="sidebar-link-icon">↗</span> View Site
+        </a>
+        <a href="#" class="sidebar-link" id="logoutBtn">
+          <span class="sidebar-link-icon">⏻</span> Logout
+        </a>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h1 id="editorHeading">New Post</h1>
+        <div style="display:flex;gap:12px;">
+          <button class="btn-outline" id="saveDraftBtn">Save Draft</button>
+          <button class="btn-primary" id="publishBtn" style="opacity:1;animation:none;">Publish</button>
+        </div>
+      </div>
+
+      <!-- Meta Fields -->
+      <div class="editor-meta">
+        <div class="form-group">
+          <label for="postTitle">Title</label>
+          <input type="text" id="postTitle" placeholder="Enter post title..." />
+        </div>
+        <div class="form-group">
+          <label for="postCategory">Category</label>
+          <input type="text" id="postCategory" placeholder="e.g. Technology, Design..." />
+        </div>
+        <div class="form-group">
+          <label for="postExcerpt">Excerpt (for previews)</label>
+          <input type="text" id="postExcerpt" placeholder="Short summary of the post..." />
+        </div>
+        <div class="form-group">
+          <label for="postImageUrl">Featured Image URL</label>
+          <input type="url" id="postImageUrl" placeholder="https://..." />
+        </div>
+        <div class="form-group">
+          <label for="postReadTime">Read Time (minutes)</label>
+          <input type="number" id="postReadTime" placeholder="5" min="1" value="5" />
+        </div>
+        <div class="form-group">
+          <label for="postTags">Tags (comma-separated)</label>
+          <input type="text" id="postTags" placeholder="tech, design, culture" />
+        </div>
+      </div>
+
+      <!-- Rich Text Editor -->
+      <div class="editor-wrap">
+        <div class="editor-toolbar">
+          <button onclick="execCmd('bold')"><b>B</b></button>
+          <button onclick="execCmd('italic')"><i>I</i></button>
+          <button onclick="execCmd('underline')"><u>U</u></button>
+          <button onclick="execCmd('strikeThrough')"><s>S</s></button>
+          <button onclick="execCmd('formatBlock','h2')">H2</button>
+          <button onclick="execCmd('formatBlock','h3')">H3</button>
+          <button onclick="execCmd('insertUnorderedList')">• List</button>
+          <button onclick="execCmd('insertOrderedList')">1. List</button>
+          <button onclick="insertBlockquote()">❝ Quote</button>
+          <button onclick="insertCodeBlock()">〈/〉 Code</button>
+          <button onclick="insertLink()">🔗 Link</button>
+          <button onclick="execCmd('removeFormat')">✕ Clear</button>
+        </div>
+        <div
+          id="editor-area"
+          contenteditable="true"
+          data-placeholder="Start writing your post here..."
+          spellcheck="true"
+        ></div>
+      </div>
+
+      <!-- Publish Options -->
+      <div class="publish-bar">
+        <div class="toggle-switch">
+          <input type="checkbox" class="toggle-input" id="featuredToggle" />
+          <label class="toggle-slider" for="featuredToggle"></label>
+          <span class="toggle-label">Mark as Featured</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;">
+          <span id="saveStatus" style="font-size:0.8rem;color:var(--text-secondary);"></span>
+          <button class="btn-outline" id="saveDraftBtn2">Save Draft</button>
+          <button class="btn-primary" id="publishBtn2" style="opacity:1;animation:none;">Publish</button>
+        </div>
+      </div>
+
+      <div class="form-message" id="editorMessage"></div>
+    </main>
+  </div>
+
+  <script type="module" src="../js/firebase-config.js"></script>
+  <script type="module" src="../js/admin-editor.js"></script>
+  <script>
+    function execCmd(cmd, val) {
+      document.execCommand(cmd, false, val || null);
+      document.getElementById('editor-area').focus();
+    }
+    function insertBlockquote() {
+      execCmd('formatBlock', 'blockquote');
+    }
+    function insertCodeBlock() {
+      const sel = window.getSelection();
+      if (sel && sel.toString()) {
+        const code = document.createElement('code');
+        code.textContent = sel.toString();
+        const range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(code);
+      }
+    }
+    function insertLink() {
+      const url = prompt('Enter URL:');
+      if (url) execCmd('createLink', url);
+    }
+  </script>
+</body>
+</html>
