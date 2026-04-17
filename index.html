@@ -9,50 +9,93 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home-anim.css" />
 </head>
 <body>
-  <!-- Three.js Background -->
+
+  <!-- Three.js Particle Background (subtle, behind everything) -->
   <div id="canvas-container"></div>
 
-  <!-- Navigation -->
+  <!-- ===================== NAV ===================== -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Emmanuel</a>
-      <ul class="nav-links">
+
+      <!-- Desktop links -->
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin/login.html" class="nav-admin-link">Admin ↗</a></li>
       </ul>
+
+      <!-- Hamburger (mobile) -->
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
     </div>
+
+    <!-- Mobile fullscreen menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mobile-menu-close" id="mobileClose" aria-label="Close menu">✕</button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin/login.html" class="mobile-admin-link">Admin Panel ↗</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- ===================== HERO ===================== -->
   <header class="hero" id="hero">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Welcome to my space</p>
-      <h1 class="hero-title">Ideas worth<br /><em>reading.</em></h1>
-      <p class="hero-sub">Thoughts on technology, creativity, and the human experience — curated by Emmanuel.</p>
-      <a href="blog.html" class="btn-primary">Explore Articles</a>
+
+    <!-- Ocean wave canvas — the animation -->
+    <canvas id="oceanCanvas"></canvas>
+
+    <!-- Floating text words that appear one by one during animation -->
+    <div class="hero-words" id="heroWords" aria-hidden="true">
+      <span class="hw hw-1">Ideas</span>
+      <span class="hw hw-2">Stories</span>
+      <span class="hw hw-3">Depth</span>
+      <span class="hw hw-4">Truth</span>
+      <span class="hw hw-5">Craft</span>
     </div>
-    <div class="hero-scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
+
+    <!-- Overlay for readability -->
+    <div class="hero-overlay"></div>
+
+    <!-- Main content — appears after animation -->
+    <div class="hero-content" id="heroContent">
+      <p class="hero-eyebrow" id="heroEyebrow">Welcome to my space</p>
+      <h1 class="hero-title">
+        <span class="hero-line" id="hLine1">Ideas worth</span>
+        <em class="hero-line" id="hLine2">reading.</em>
+      </h1>
+      <p class="hero-sub" id="heroSub">Thoughts on technology, creativity, and the human experience.</p>
+      <div class="hero-cta-wrap" id="heroCta">
+        <a href="blog.html" class="btn-primary">Explore Articles</a>
+        <a href="about.html" class="btn-ghost">About Me</a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-hint" id="scrollHint">
+      <div class="scroll-mouse"><div class="scroll-mouse-dot"></div></div>
+      <span>Scroll to explore</span>
     </div>
   </header>
 
-  <!-- Featured Posts -->
+  <!-- ===================== FEATURED ===================== -->
   <section class="section" id="featured">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">Featured</span>
         <h2 class="section-title">Hand-picked reads</h2>
       </div>
       <div class="featured-grid" id="featuredGrid">
-        <!-- Dynamically populated -->
         <div class="skeleton-card"></div>
         <div class="skeleton-card"></div>
         <div class="skeleton-card"></div>
@@ -60,10 +103,10 @@
     </div>
   </section>
 
-  <!-- Latest Posts -->
+  <!-- ===================== LATEST ===================== -->
   <section class="section section-alt" id="latest">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">Latest</span>
         <h2 class="section-title">Fresh from the desk</h2>
       </div>
@@ -79,16 +122,16 @@
     </div>
   </section>
 
-  <!-- About Snippet -->
+  <!-- ===================== ABOUT SNIPPET ===================== -->
   <section class="section about-snippet" id="about-snippet">
     <div class="container about-snippet-inner">
-      <div class="about-text">
+      <div class="about-text reveal">
         <span class="section-tag">About</span>
         <h2 class="section-title">Hi, I'm Emmanuel.</h2>
-        <p>I write about technology, design, and the ideas that shape our world. This blog is my corner of the internet — a place to think out loud, share what I learn, and connect with curious minds.</p>
+        <p>I write about technology, design, and the ideas that shape our world. This blog is my corner of the internet.</p>
         <a href="about.html" class="btn-outline">More About Me</a>
       </div>
-      <div class="about-visual">
+      <div class="about-visual reveal">
         <div class="about-card-glow"></div>
         <div class="about-card">
           <div class="about-initials">E</div>
@@ -99,7 +142,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-left">
@@ -119,13 +162,29 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts — Three.js only for particles, no GSAP dependency -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script type="module" src="js/firebase-config.js"></script>
   <script type="module" src="js/particles.js"></script>
-  <script type="module" src="js/lenis.js"></script>
   <script type="module" src="js/home.js"></script>
+  <script type="module" src="js/hero-anim.js"></script>
+
+  <script>
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+    // Mobile menu
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.add('open');
+      document.getElementById('navToggle').classList.add('open');
+    });
+    document.getElementById('mobileClose').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('navToggle').classList.remove('open');
+    });
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
