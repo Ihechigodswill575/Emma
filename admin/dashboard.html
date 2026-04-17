@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Emmanuel Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">Emmanuel</div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link active">
+          <span class="sidebar-link-icon">⊞</span> Dashboard
+        </a>
+        <a href="posts.html" class="sidebar-link">
+          <span class="sidebar-link-icon">✎</span> All Posts
+        </a>
+        <a href="editor.html" class="sidebar-link">
+          <span class="sidebar-link-icon">＋</span> New Post
+        </a>
+        <a href="messages.html" class="sidebar-link">
+          <span class="sidebar-link-icon">✉</span> Messages
+        </a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="../index.html" class="sidebar-link">
+          <span class="sidebar-link-icon">↗</span> View Site
+        </a>
+        <a href="#" class="sidebar-link" id="logoutBtn">
+          <span class="sidebar-link-icon">⏻</span> Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h1>Dashboard</h1>
+        <a href="editor.html" class="btn-primary" style="opacity:1;animation:none;">+ New Post</a>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-label">Total Posts</div>
+          <div class="stat-card-value" id="statTotal">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Published</div>
+          <div class="stat-card-value" id="statPublished">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Drafts</div>
+          <div class="stat-card-value" id="statDrafts">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Messages</div>
+          <div class="stat-card-value" id="statMessages">—</div>
+        </div>
+      </div>
+
+      <!-- Recent Posts Table -->
+      <div class="admin-table-wrap">
+        <div class="admin-table-header">
+          <h3>Recent Posts</h3>
+          <a href="posts.html" style="font-size:0.8rem;color:var(--accent);">View All →</a>
+        </div>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="recentPostsBody">
+            <tr><td colspan="5" style="color:var(--text-secondary);text-align:center;padding:40px;">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="../js/firebase-config.js"></script>
+  <script type="module" src="../js/admin-dashboard.js"></script>
+</body>
+</html>
