@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emmanuel — Premium Blog</title>
+  <meta name="description" content="Emmanuel's premium blog — thoughts, stories, and ideas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Three.js Background -->
+  <div id="canvas-container"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Emmanuel</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Welcome to my space</p>
+      <h1 class="hero-title">Ideas worth<br /><em>reading.</em></h1>
+      <p class="hero-sub">Thoughts on technology, creativity, and the human experience — curated by Emmanuel.</p>
+      <a href="blog.html" class="btn-primary">Explore Articles</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- Featured Posts -->
+  <section class="section" id="featured">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Featured</span>
+        <h2 class="section-title">Hand-picked reads</h2>
+      </div>
+      <div class="featured-grid" id="featuredGrid">
+        <!-- Dynamically populated -->
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Posts -->
+  <section class="section section-alt" id="latest">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Latest</span>
+        <h2 class="section-title">Fresh from the desk</h2>
+      </div>
+      <div class="latest-grid" id="latestGrid">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+      <div class="center-btn">
+        <a href="blog.html" class="btn-outline">View All Posts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Snippet -->
+  <section class="section about-snippet" id="about-snippet">
+    <div class="container about-snippet-inner">
+      <div class="about-text">
+        <span class="section-tag">About</span>
+        <h2 class="section-title">Hi, I'm Emmanuel.</h2>
+        <p>I write about technology, design, and the ideas that shape our world. This blog is my corner of the internet — a place to think out loud, share what I learn, and connect with curious minds.</p>
+        <a href="about.html" class="btn-outline">More About Me</a>
+      </div>
+      <div class="about-visual">
+        <div class="about-card-glow"></div>
+        <div class="about-card">
+          <div class="about-initials">E</div>
+          <p class="about-card-name">Emmanuel</p>
+          <p class="about-card-role">Writer & Thinker</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">Emmanuel</span>
+        <p>Premium thoughts, beautifully written.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin/login.html">Admin</a>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; <span id="year"></span> Emmanuel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/particles.js"></script>
+  <script type="module" src="js/lenis.js"></script>
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>

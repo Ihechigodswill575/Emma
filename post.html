@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post — Emmanuel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="canvas-container"></div>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Emmanuel</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Post Hero with GSAP featured image effect -->
+  <div class="post-hero" id="postHero">
+    <div id="featuredImgWrap">
+      <!-- Dynamically inserted -->
+    </div>
+    <div class="post-hero-overlay"></div>
+    <div class="post-hero-content" id="postHeroContent">
+      <!-- Dynamically inserted -->
+    </div>
+  </div>
+
+  <!-- Article Content -->
+  <div class="article-content" id="articleContent">
+    <div id="loadingState" style="text-align:center;color:var(--text-secondary);padding:60px 0;">
+      Loading article...
+    </div>
+  </div>
+
+  <!-- Related Posts -->
+  <section class="related-posts" id="relatedSection" style="display:none;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">More to Read</span>
+        <h2 class="section-title">Related Posts</h2>
+      </div>
+      <div class="latest-grid" id="relatedGrid"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">Emmanuel</span>
+        <p>Premium thoughts, beautifully written.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; <span id="year"></span> Emmanuel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/particles.js"></script>
+  <script type="module" src="js/lenis.js"></script>
+  <script type="module" src="js/post.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Emmanuel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="canvas-container"></div>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Emmanuel</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- About Hero -->
+  <header class="about-hero">
+    <div class="container about-hero-inner">
+      <div>
+        <span class="section-tag">About Me</span>
+        <h1 style="font-family:var(--font-heading);font-size:clamp(3rem,7vw,5.5rem);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-top:16px;">
+          Hi, I'm<br /><em style="color:var(--accent);">Emmanuel.</em>
+        </h1>
+        <p style="color:var(--text-secondary);margin-top:24px;font-size:1.05rem;line-height:1.8;max-width:480px;">
+          A writer, thinker, and creator. I explore the intersection of technology, creativity, and human experience — and share what I discover here.
+        </p>
+        <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="blog.html" class="btn-primary" style="opacity:1;animation:none;">Read My Work</a>
+          <a href="contact.html" class="btn-outline">Get In Touch</a>
+        </div>
+      </div>
+      <div class="about-big-initial">E</div>
+    </div>
+  </header>
+
+  <!-- About Content -->
+  <section class="about-page-content section">
+    <span class="section-tag">My Story</span>
+    <h2>Where it all started</h2>
+    <p>
+      I've always been fascinated by ideas — how they form, how they spread, and how they change the world. Writing became my way of processing and sharing those ideas. This blog is the result of that obsession.
+    </p>
+    <p>
+      I write about technology and its impact on society, the creative process, philosophy, and anything else that captures my attention. My goal is always clarity: taking complex ideas and making them accessible without losing their depth.
+    </p>
+
+    <span class="section-tag" style="margin-top:48px;display:block;">What I Do</span>
+    <h2>Topics I explore</h2>
+    <p>
+      My writing spans a broad range of subjects, united by a curiosity about how the world works and how we can navigate it better.
+    </p>
+    <div class="skills-grid">
+      <div class="skill-chip">Technology</div>
+      <div class="skill-chip">Design</div>
+      <div class="skill-chip">Philosophy</div>
+      <div class="skill-chip">Creativity</div>
+      <div class="skill-chip">Culture</div>
+      <div class="skill-chip">Productivity</div>
+      <div class="skill-chip">Startups</div>
+      <div class="skill-chip">Writing</div>
+      <div class="skill-chip">Future</div>
+      <div class="skill-chip">Human Experience</div>
+    </div>
+
+    <span class="section-tag" style="margin-top:48px;display:block;">Connect</span>
+    <h2>Let's talk</h2>
+    <p>
+      I'm always open to thoughtful conversations, collaborations, and feedback. Reach out through the contact page or find me on social media.
+    </p>
+    <a href="contact.html" class="btn-outline" style="margin-top:8px;">Contact Me →</a>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">Emmanuel</span>
+        <p>Premium thoughts, beautifully written.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; <span id="year"></span> Emmanuel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/particles.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
